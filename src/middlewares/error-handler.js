@@ -4,34 +4,19 @@ import { ClientError } from '../exceptions/index.js';
 const ErrorHandler = (err, req, res, next) => {
     // Handle ClientError and its subclasses (InvariantError, NotFoundError)
     if (err instanceof ClientError) {
-        return response({
-            res,
-            statusCode: err.statusCode,
-            message: err.message,
-            data: null,
-        });
+        return response(res, err.statusCode, err.message, null,);
     }
 
     // Handle Joi validation errors
     if (err.isJoi) {
-        return response({
-            res,
-            statusCode: 400,
-            message: err.details[0].message,
-            data: null,
-        });
+        return response(res, 400, err.details[0].message, null,);
     }
 
     const statusCode = err.statusCode || err.status || 500;
     const message = err.message || 'Internal Server Error';
 
     console.error('Unhandled error:', err);
-    return response({
-        res,
-        statusCode,
-        message,
-        data: null,
-    });
+    return response(res, statusCode, message, null);
 };
 
 export default ErrorHandler;

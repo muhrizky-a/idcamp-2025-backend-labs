@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import users from '../services/users/routes/index.js';
+import { createPaymentRouter } from '../services/payments/routes/index.js';
 
-const router = Router();
+export function createRouter(paymentController) {
+    const router = Router();
 
-router.use('/', users);
-
-export default router;
+    router.use('/', createPaymentRouter(paymentController));
+    return router;
+}

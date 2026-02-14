@@ -19,9 +19,16 @@ class NotFoundError extends ClientError {
         this.name = 'NotFoundError';
     }
 }
+class AuthorizationError extends ClientError {
+    constructor(message) {
+        super(message, 403);
+        this.name = 'AuthorizationError';
+    }
+}
 
 export {
     ClientError,
     InvariantError,
     NotFoundError,
+    AuthorizationError,
 };

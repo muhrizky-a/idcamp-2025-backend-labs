@@ -1,8 +1,8 @@
-# Add an user
+# Create transaction
 
-curl -X POST http://localhost:3000/users ^
+curl -X POST http://localhost:3000/transactions ^
 -H "Content-Type: application/json" ^
--d "{ \"email\": \"john@gmail.com\", \"password\": \"qwerty\", \"fullname\": \"John Doe\"}"
+-d "{ \"email\": \"john@gmail.com\", \"name\": \"John\", \"package_id\": \"super\"}"
 
 # Get all users
 
