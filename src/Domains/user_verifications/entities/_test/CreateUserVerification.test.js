@@ -9,7 +9,7 @@ describe("CreateUserVerification entities", () => {
     };
 
     // Action & Assert
-    expect(() => new NewAuth(payload)).toThrowError(
+    expect(() => new CreateUserVerification(payload)).toThrowError(
       "CREATE_USER_VERIFICATION.NOT_CONTAIN_NEEDED_PROPERTY",
     );
   });
@@ -22,7 +22,7 @@ describe("CreateUserVerification entities", () => {
     };
 
     // Action & Assert
-    expect(() => new NewAuth(payload)).toThrowError(
+    expect(() => new CreateUserVerification(payload)).toThrowError(
       "CREATE_USER_VERIFICATION.NOT_MEET_DATA_TYPE_SPECIFICATION",
     );
   });
@@ -35,11 +35,11 @@ describe("CreateUserVerification entities", () => {
     };
 
     // Action
-    const newUserVerification = new NewUserVerification(payload);
+    const createUserVerification = new CreateUserVerification(payload);
 
     // Assert
-    expect(newUserVerification).toBeInstanceOf(NewUserVerification);
-    expect(newUserVerification.userId).toEqual(payload.userId);
-    expect(newUserVerification.token).toEqual(payload.token);
+    expect(createUserVerification).toBeInstanceOf(CreateUserVerification);
+    expect(createUserVerification.userId).toEqual(payload.userId);
+    expect(createUserVerification.token).toEqual(payload.token);
   });
 });

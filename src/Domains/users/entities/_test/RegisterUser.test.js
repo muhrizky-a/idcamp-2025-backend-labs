@@ -26,7 +26,7 @@ describe('a RegisterUser entities', () => {
     };
 
     // Action and Assert
-    expect(() => new RegisterUser(payload)).toThrowError('REGISTER_USER.EMAIL_CONTAIN_RESTRICTED_CHARACTER');
+    expect(() => new RegisterUser(payload)).toThrowError('REGISTER_USER.EMAIL_NOT_VALID');
   });
 
   it('should create registerUser object correctly', () => {

@@ -10,11 +10,11 @@ class CreateUserVerification {
     const { userId, token } = payload;
 
     if (!userId || !token) {
-      throw new Error('NEW_AUTH.NOT_CONTAIN_NEEDED_PROPERTY');
+      throw new Error('CREATE_USER_VERIFICATION.NOT_CONTAIN_NEEDED_PROPERTY');
     }
 
     if (typeof userId !== 'string' || typeof token !== 'string') {
-      throw new Error('NEW_AUTH.NOT_MEET_DATA_TYPE_SPECIFICATION');
+      throw new Error('CREATE_USER_VERIFICATION.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
   }
 }

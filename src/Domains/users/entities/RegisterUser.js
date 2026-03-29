@@ -16,8 +16,9 @@ class RegisterUser {
       throw new Error('REGISTER_USER.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
 
-    if (!email.match(/^[\w]+$/)) {
-      throw new Error('REGISTER_USER.EMAIL_CONTAIN_RESTRICTED_CHARACTER');
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+      throw new Error('REGISTER_USER.EMAIL_NOT_VALID');
     }
   }
 }
