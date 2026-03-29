@@ -4,18 +4,12 @@ export const up = (pgm) => {
       type: 'VARCHAR(50)',
       primaryKey: true,
     },
-    username: {
-      type: 'VARCHAR(50)',
-      notNull: true,
-      unique: true,
-    },
-    password: {
+    email: {
       type: 'TEXT',
       notNull: true,
     },
-    fullname: {
-      type: 'TEXT',
-      notNull: true,
+    verified_at: {
+      type: 'TIMESTAMP',
     },
   });
 };
