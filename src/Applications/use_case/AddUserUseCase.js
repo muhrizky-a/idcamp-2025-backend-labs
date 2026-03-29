@@ -1,15 +1,17 @@
 import RegisterUser from '../../Domains/users/entities/RegisterUser.js';
 
 class AddUserUseCase {
-  constructor({ userRepository, passwordHash }) {
+  constructor({ userRepository }) {
     this._userRepository = userRepository;
-    this._passwordHash = passwordHash;
   }
 
   async execute(useCasePayload) {
     const registerUser = new RegisterUser(useCasePayload);
-    await this._userRepository.verifyAvailableUsername(registerUser.username);
-    registerUser.password = await this._passwordHash.hash(registerUser.password);
+    const user = await this._userRepository.getUserByEmail(registerUser.email);
+    if (user) {
+      return user;
+    }
+
     return this._userRepository.addUser(registerUser);
   }
 }

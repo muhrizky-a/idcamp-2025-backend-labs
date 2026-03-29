@@ -1,16 +1,14 @@
 import express from 'express';
 import ClientError from '../../Commons/exceptions/ClientError.js';
 import DomainErrorTranslator from '../../Commons/exceptions/DomainErrorTranslator.js';
-import users from '../../Interfaces/http/api/users/index.js';
-import authentications from '../../Interfaces/http/api/authentications/index.js';
+import auth from '../../Interfaces/http/api/auth/index.js';
 
 const createServer = async (container) => {
   const app = express();
 
   app.use(express.json());
 
-  app.use('/users', users(container));
-  app.use('/authentications', authentications(container));
+  app.use('/auth', auth(container));
 
   app.use((req, res) => {
     res.status(404).json({
